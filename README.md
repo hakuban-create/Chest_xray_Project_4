@@ -4,15 +4,48 @@ We are Team Purple and our Team consists of four members:
 2.Michael MacInnis
 3.Julian Hahm
 
-### For Project 4, we were tasked to solve, analyze, or visualize a problem using machine learning (ML) with the other technologies we’ve learned.
-### We decided to figure out how Machine learning can assist in detecting Pneumonia. 
-### Pneumonia is a serious infection or inflammation of the lungs, air sacs, or alveoli, caused by bacteria, viruses, fungi, or chemical irritants. The air sacs fill with pus and other liquid, which can lead to symptoms ranging from mild to severe.  
-### Thus, it would be helpful if machine learning could assist in the detection of Pneumonia.  
+Section 1 - Julian
 
-### Diagnostic evaluation of Pneumonia typically involves chest X-ray imaging, enabling healthcare professionals to better diagnose the type and severity of pneumonia.  When interpreting the x-ray, the radiologist will look for white spots in the lungs (called infiltrates) that identify an infection. This exam will also help determine if you have any complications related to pneumonia such as abscesses or pleural effusions (fluid surrounding the lungs).
+For Project 4, we were tasked to solve, analyze, or visualize a problem using machine learning (ML) with the other technologies we’ve learned.
 
-# Dataset & Modules
-### We used a dataset found on Kaggle that is organized into 3 folders (train, test, val) and contains subfolders for each image category (Pneumonia/Normal). There are 5,863 X-Ray images (JPEG) and 2 categories (Pneumonia/Normal*).
+We chose to see how Machine learning can assist in detecting Pneumonia through scanning Xray images.  Before we dive into what we did, let's first start with some background on Pneumonia.
+
+Pneumonia is a prevalent respiratory infection that affects people of all ages worldwide, with significant morbidity and mortality rates, particularly among high-risk populations. Effective vaccination, early diagnosis, and appropriate treatment are essential in reducing the impact of pneumonia on public health as it is a condition that affects millions of people each year.
+
+Pneumonia is a serious infection or inflammation of the lungs, air sacs, or alveoli, caused by bacteria, viruses, fungi, or chemical irritants. The air sacs fill with pus and other liquid, which can lead to symptoms ranging from mild to severe.  X ray images can be crucial in helping diagnosing Pneumonia by visualizing the condition of the lungs.  Listed below are a some but not all ways that Xray imaging helps diagnose Pneumonia.
+
+1.  Identification of Infiltrates: Pneumonia typically causes inflammation and fluid buildup (consolidation) in the air sacs (alveoli) of the lungs. On an X-ray, this appears as white or opaque areas that indicate the presence of fluid or tissue density changes.
+
+2. Location and Extent: X-rays can show the affected areas of the lungs and help determine whether pneumonia is localized to one area (lobar pneumonia) or spread throughout both lungs (bronchopneumonia).
+
+3. Comparison with Healthy Tissue: X-rays allow comparison between affected and unaffected areas of the lungs. This contrast helps in identifying abnormalities and assessing the severity of pneumonia.
+
+![Screenshot 2024-06-11 at 6 57 19 PM](https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/0dffd650-9236-4874-b080-6880698e6d6d)
+
+In the image above you can see how Xrays are used to visualize whether there may be Pneumonia.
+![Screenshot 2024-06-16 at 8 37 47 AM](https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/a85b0dd8-69d9-4d46-aa46-e21665fb4235)
+
+
+Left -  normal chest X-ray depicts clear lungs without any areas of abnormal opacification in the image.
+Middle - Bacterial pneumonia (middle) typically exhibits a focal lobar consolidation, in this case in the right upper lobe (white arrows)
+Right - Viral pneumonia (right) manifests with a more diffuse ‘‘interstitial’’ pattern in both lungs.
+
+<img width="568" alt="Screenshot 2024-06-16 at 8 55 22 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/6c5e8d28-11c1-4686-945e-c24f2a5cd26e">
+
+Here is another image showing the fluid and consolidations found in the right lung.
+
+
+
+
+Section #2 - Khali
+
+Now that we understand the challenge, we want to give some background on dataset.  Our dataset was taken from Kaggle and were selected from restrospective cohorts of pediatric patients of one to five years old from Guangzhou Women & Children's Medical Center.  The Xrays were taken as a part of a patients regular routine care.  These Xrays were screened for quality control and only images that were clear and readable were included in the dataset.  Thereafter two physicians graded the readable images before allowing them to be part of the dataset. 
+
+<img width="811" alt="Screenshot 2024-06-16 at 8 58 06 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/bda99895-26f8-49a4-8723-45496788e7bf">
+
+
+The dataset is organized into 3 folders.  Train, Test and Val are the three folders of images and each are divided into two subcategories of normal or pneumonia.  The total number of images within our dataset is 5,863.
+
 
 ### Train:Contains X-Ray images for training the model.Organized into subfolders for each image category (Pneumonia/Normal).Total of X-Ray images: 5,863.
 
@@ -58,7 +91,15 @@ We are Team Purple and our Team consists of four members:
 
 
 
+Sources & Acknowledgments:
 
+Xpert Assistant
+
+ChatGPT
+
+Data: https://data.mendeley.com/datasets/rscbjbr9sj/2
+License: CC BY 4.0
+Citation: http://www.cell.com/cell/fulltext/S0092-8674(18)30154-5
 
 
 
