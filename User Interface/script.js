@@ -35,7 +35,7 @@ imageUpload.addEventListener("change", async function () {
 
     const res = await response.json();
     resultSection.innerHTML = `<p>Result: ${res[0].result}</p>`;
-    console.log("API Response:", res[0].result);
+    console.log("API Response:", res);
 
     // Handle API response as needed
   } catch (error) {
