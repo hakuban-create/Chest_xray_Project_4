@@ -1,9 +1,8 @@
 # Chest_xray_Project_4
-### We are Team Purple and our Team consists of four members:
-### 1.Khali Baasandorj
-### 2.Michael MacInnis
-### 3.Jessica Chellapa
-### 4.Julian Hahm
+We are Team Purple and our Team consists of four members:
+1.Khali Baasandorj
+2.Michael MacInnis
+3.Julian Hahm
 
 ### For Project 4, we were tasked to solve, analyze, or visualize a problem using machine learning (ML) with the other technologies we’ve learned.
 ### We decided to figure out how Machine learning can assist in detecting Pneumonia. 
