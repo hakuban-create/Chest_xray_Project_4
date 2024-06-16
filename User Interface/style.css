@@ -12,3 +12,14 @@ body {
 #imagePreview {
   max-width: 100%;
 }
+
+#result {
+  font-size: 30px;
+}
+.healthy {
+  color: green;
+}
+
+.not-healthy {
+  color: red;
+}

@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import tensorflow as tf
-import streamlit as st
 from PIL import Image, ImageOps
 import numpy as np
 
@@ -9,26 +8,28 @@ import numpy as np
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# Model load
+# Machine learning model load
 model = model = tf.keras.models.load_model("chest_xray_trained.h5")
 
-# API endpoint
+# API endpoint - Homepage
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def homepage():
     return "Chest X-ray Pneumonia Detector"
 
+# API endpoint - xray image processor
 @app.route('/', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def get_image_processed():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image found'})
+
+    # getting the image from api endpoint
     file = request.files['image']
     image = Image.open(file).convert('RGB')
-    # st.image(image, use_column_width=True)
 
+    # calling function to classify the image
     index, conf_score = predict_image(image, model)
 
+    # preparing response
     data = []
     data.append({
             "result": ["Healthy", "Pneumonia"][index],
