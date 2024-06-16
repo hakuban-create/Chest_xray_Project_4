@@ -16,10 +16,6 @@ body {
 #result {
   font-size: 30px;
 }
-.healthy {
-  color: green;
-}
-
-.not-healthy {
-  color: red;
+#result button {
+  font-size: 30px;
 }

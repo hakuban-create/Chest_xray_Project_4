@@ -35,11 +35,21 @@ imageUpload.addEventListener("change", async function () {
 
     const res = await response.json();
     if (res[0].result == "Healthy") {
-      resultSection.innerHTML = `<span>Result: </span>
-                                <span class="healthy">${res[0].result}</span>`;
+      resultSection.innerHTML = `<div class="alert alert-success" role="alert">
+      <span>Result: </span>
+      <span class="healthy">${res[0].result}</span>
+      <span>
+      </span>
+      </div>
+      `;
     } else {
-      resultSection.innerHTML = `<span>Result: </span>
-                                  <span class="not-healthy">${res[0].result}</span>`;
+      resultSection.innerHTML = `<div class="alert alert-danger" role="alert">
+      <span>Result: </span>
+      <span class="not-healthy">${res[0].result}</span>
+      <span>
+      </span>
+      </div>
+      `;
     }
     console.log("API Response:", res);
 
