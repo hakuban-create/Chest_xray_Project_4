@@ -40,13 +40,13 @@ Here is another image showing the fluid and consolidations found in the right lu
 
 Section #2 - Khali
 
-Now that we understand the challenge, we want to give some background on dataset.  Our dataset was taken from Kaggle and were selected from restrospective cohorts of pediatric patients of one to five years old from Guangzhou Women & Children's Medical Center.  The Xrays were taken as a part of a patients regular routine care.  These Xrays were screened for quality control and only images that were clear and readable were included in the dataset.  Thereafter two physicians graded the readable images before allowing them to be part of the dataset. 
+Now that we understand the challenge, we want to provide some background on dataset.  Our dataset was taken from Kaggle and was selected from restrospective cohorts of pediatric patients of one to five years old from Guangzhou Women & Children's Medical Center.  The Xrays were taken as a part of a patients regular routine care.  These Xrays were screened for quality control and only images that were clear and readable were included in the dataset.  Thereafter, two physicians graded the readable images before allowing them to be part of the dataset. 
 
 <img width="811" alt="Screenshot 2024-06-16 at 8 58 06 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/bda99895-26f8-49a4-8723-45496788e7bf">
 
-The dataset is organized into 3 folders.  Train, Test, and Val are the three folders of images and each is divided into two subcategories normal or pneumonia.  The total number of images within our dataset is 5,863 for the train folder.
+The dataset is organized into 3 folders.  Train, Test, and Val are the three folders of images and each is divided into two subcategories normal or pneumonia.  The total number of images in the train folder is 5,863.
 
-To first start our data processing, we used Google Colab to host the dataset/images and leveraged Python, Numpy and Matplotlib to help in visualizing our model.  Furthermore, we imported modules to assist with our model.
+To start our data processing, we used Google Colab to host the dataset/images and leveraged Python, Numpy, and Matplotlib to help in visualizing our model.  Furthermore, we imported modules to assist with our model.
 
 1. OS - provides functions for creating and removing a directory (folder), fetching its contents, changing and identifying the current directory,
 2. cv2 - brings the OpenCV library into the Python script, allowing access to its functions for computer vision and image processing.
@@ -64,15 +64,13 @@ Data Preprocessing - We used directory_path, train_path, and test_path in Google
  <img width="700" alt="Screenshot 2024-06-16 at 9 41 31 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/3e57aaf1-6b13-4cdb-9eba-295660a7b579">
 
 
-We defined a set of image processing functions to preprocess images for our chest x-ray dataset. These functions include sharpening, denoising, histogram equalization, normalization, resizing, and denormalization
+We defined a set of image processing functions to preprocess images for our chest x-ray dataset. These functions include sharpening, denoising, histogram equalization,and resizing.
 
-- The sharpen function you've defined applies a sharpening filter to the input image using a specific kernel for sharpening. The kernel you are using is a 3x3.
-- Gaussian blur helps in reducing noise and unwanted details in the image, making it smooth
-- Histogram equalization is a technique that enhances the contrast of an image by spreading out the intensity values across the histogram.
-- the normalization is performed by dividing all pixel values in the image by 255.0 to ensure pixel values are normalized between 1 and 0
-- resize(image): This function resizes the input image to a fixed size of 256x256 pixels using OpenCV's resize function.
-- The denormalization function multiplies all pixel values in the image by 255. This operation brings the pixel values back to their original scale after normalization.
-- preprocess(image): This function applies a series of image processing steps to the input image. It first equalizes the histogram, then denoises the image, sharpens it, and finally resizes it to 256x256 pixels.
+- The sharpen function applied a sharpening filter to the input image using a specific kernel for sharpening. The kernel we used is a 3x3.
+- We used Gaussian blur to help in reducing noise and unwanted details in the image, making it smooth
+- Histogram equalization was used to enhance the contrast of an image by spreading out the intensity values across the histogram.
+- Resize(image): This function resized the input image to a fixed size of 256x256 pixels using OpenCV's resize function.
+- Preprocess(image): This function applied a series of image processing steps to the input image. It first equalized the histogram, then denoised the image, sharpened it, and finally resized it to 256x256 pixels.
 
 Thereafter, we looped through the images in the "NORMAL" category of the training set, reading each image using OpenCV, resizing it to 256x256 pixels, and then appending the resized image to the X_train list while adding the label "0" (indicating "NORMAL") to the y_train list.  Similarly, we processed the images in the "PNEUMONIA" category of the training set. We read each image, resizing it to 256x256 pixels, and then appended it to the resized image to the X_train list while adding the label "1" (indicating "PNEUMONIA") to the y_train list. We did the same for the test dataset and after, we converted our feature and label lists to Numpy Arrays to better suit Machine Learning models.
 
@@ -120,9 +118,25 @@ We also used Keras Tuner to provide flexibility in tuning the model's architectu
 
 Hyperband tuner searches for best hyperparameters for your neural network model by optimizing the validation accuracy over a specified number of epochs and iterations.
 
-![Screenshot 2024-06-16 at 10 17 26 AM](https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/8e902369-577b-48df-ba04-ea5342bf6b14)
+![Screenshot 2024-06-16 at 2 06 31 PM](https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/b7b38bcc-b5ff-4ff4-9763-858d7bf9984e)
 
-We were able to get our ML model to 84.6% accuracy in diagnosing Pneumonia from Xray images.  
+We were able to get our ML model to 85% accuracy.  
+
+Next, we used the model.evaluate() function to return the loss and accuracy of the model on the test data. The loss value represents how well the model is performing, with lower values indicating better performance. The accuracy value shows the proportion of correctly classified instances in the test data.
+
+<img width="751" alt="Screenshot 2024-06-16 at 2 16 13 PM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/56dd05ba-6a9c-4e83-83c0-e5f4fe6c583f">
+
+In addition, we used the predict method to generate predictions from our model and applied a threshold of 0.5 to convert the probabilities into binary predictions. After that, we printed a classification report to evaluate the model's performance on the test data.
+
+The classification_report function provides a summary of important classification metrics such as precision, recall, F1-score, and support for each class.
+
+<img width="864" alt="Screenshot 2024-06-16 at 2 16 20 PM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/361e26cf-040e-4dfb-849f-3e68cd57cf10">
+
+And lastly, we ran a confusion matrix to see correct and incorrect predictions made by the model.  What we noticed is that the model predicts Pnemonia correctly for those who actually have it but misdiagnoses those who are normal to sometimes have Pneumonia.  We believe this to be from the dataset have a much larger volume of Pneumonia images.  
+
+<img width="1108" alt="Screenshot 2024-06-16 at 2 21 01 PM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/4497e16d-0056-449b-a0fb-81879dfb76c6">
+
+We also created a UI that allows us to select an image to see whether or not the model predicts the image to have Pneomonia.  Similar to the confusion matrix we ran, we can see that the model predicts those who have Pneumonia very accurately but something it predicts those who are normal to have Pneumonia. 
 
 Thank you.
 
