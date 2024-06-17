@@ -5,8 +5,6 @@ We are Team Purple and our Team consists of three Team Members.
 2. Michael MacInnis
 3. Julian Hahm
 
-Section 1 - Julian
-
 For Project 4, we were tasked to solve, analyze, or visualize a problem using machine learning (ML) with the other technologies we’ve learned.
 
 We chose to see how Machine learning can assist in detecting Pneumonia through scanning Xray images.  Before we dive into what we did, let's first start with some background on Pneumonia.
