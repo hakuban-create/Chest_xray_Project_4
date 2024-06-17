@@ -35,11 +35,6 @@ Right - Viral pneumonia (right) manifests with a more diffuse ‘‘interstitial
 
 Here is another image showing the fluid and consolidations found in the right lung.
 
-
-
-
-Section #2 - Khali
-
 Now that we understand the challenge, we want to provide some background on dataset.  Our dataset was taken from Kaggle and was selected from restrospective cohorts of pediatric patients of one to five years old from Guangzhou Women & Children's Medical Center.  The Xrays were taken as a part of a patients regular routine care.  These Xrays were screened for quality control and only images that were clear and readable were included in the dataset.  Thereafter, two physicians graded the readable images before allowing them to be part of the dataset. 
 
 <img width="811" alt="Screenshot 2024-06-16 at 8 58 06 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/bda99895-26f8-49a4-8723-45496788e7bf">
@@ -63,7 +58,6 @@ Data Preprocessing - We used directory_path, train_path, and test_path in Google
 
  <img width="700" alt="Screenshot 2024-06-16 at 9 41 31 AM" src="https://github.com/hakuban-create/Chest_xray_Project_4/assets/154090947/3e57aaf1-6b13-4cdb-9eba-295660a7b579">
 
-
 We defined a set of image processing functions to preprocess images for our chest x-ray dataset. These functions include sharpening, denoising, histogram equalization,and resizing.
 
 - The sharpen function applied a sharpening filter to the input image using a specific kernel for sharpening. The kernel we used is a 3x3.
@@ -73,8 +67,6 @@ We defined a set of image processing functions to preprocess images for our ches
 - Preprocess(image): This function applied a series of image processing steps to the input image. It first equalized the histogram, then denoised the image, sharpened it, and finally resized it to 256x256 pixels.
 
 Thereafter, we looped through the images in the "NORMAL" category of the training set, reading each image using OpenCV, resizing it to 256x256 pixels, and then appending the resized image to the X_train list while adding the label "0" (indicating "NORMAL") to the y_train list.  Similarly, we processed the images in the "PNEUMONIA" category of the training set. We read each image, resizing it to 256x256 pixels, and then appended it to the resized image to the X_train list while adding the label "1" (indicating "PNEUMONIA") to the y_train list. We did the same for the test dataset and after, we converted our feature and label lists to Numpy Arrays to better suit Machine Learning models.
-
-Section 3 - Michael
 
 Now we are going to talk about our Convolutional neural network (CNN) model for image classification.
 
